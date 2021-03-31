@@ -6,6 +6,7 @@ from tensorflow.keras.layers import (ELU, BatchNormalization, Conv2D, Dense,
                                      Dropout, Flatten, LeakyReLU, MaxPooling2D,
                                      ReLU)
 
+from data import get_test_data_generator
 from utils import IMG_WIDTH
 
 
@@ -75,6 +76,11 @@ def build_model(
     model = Model(ip, op_layer)
 
     return model
+
+
+def evaluate_model(model, test_data_dir, batch_size):
+    data = get_test_data_generator(test_data_dir, batch_size)
+    return model.evalute(data)
 
 
 def predict(model, data, steps=None, threshold=0.5):
