@@ -54,12 +54,12 @@ def get_train_data_generator(
     return train_generator, validation_generator
 
 
-def get_test_data_generator(test_data_dir, batch_size):
+def get_test_data_generator(test_data_dir, batch_size, shuffle=False):
     test_datagen = get_datagen(use_default_augmentation=False)
     return test_datagen.flow_from_directory(
         directory=test_data_dir,
         target_size=(IMG_WIDTH, IMG_WIDTH),
         batch_size=batch_size,
         class_mode='binary',
-        shuffle=False,
+        shuffle=shuffle,
     )
