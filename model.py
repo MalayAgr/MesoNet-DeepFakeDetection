@@ -1,6 +1,7 @@
 import pickle
 
 import numpy as np
+from sklearn.metrics import classification_report
 from tensorflow.keras import Input, Model
 from tensorflow.keras.layers import (ELU, BatchNormalization, Conv2D, Dense,
                                      Dropout, Flatten, LeakyReLU, MaxPooling2D,
@@ -99,6 +100,16 @@ def evaluate_model(model, test_data_dir, batch_size):
 def predict(model, data, steps=None, threshold=0.5):
     predictions = model.predict(data, steps=steps, verbose=1)
     return np.where(predictions >= threshold, 1, 0)
+
+
+def get_classification_report(
+    model, data_dir, batch_size=64,
+    steps=None, threshold=0.5, output_dict=False
+):
+    data = get_test_data_generator(data_dir, batch_size=batch_size)
+    predictions = predict(model, data, steps, threshold)
+    predictions = predictions.reshape((predictions.shape[0],))
+    return classification_report(data.classes, predictions, output_dict=output_dict)
 
 
 def save_model_history(history, filename):

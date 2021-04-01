@@ -1,9 +1,7 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import ImageGrid
-from sklearn.metrics import classification_report
 
-from data import get_test_data_generator
-from model import get_activation_model, predict
+from model import get_activation_model
 
 
 def plot_loss_curve(history):
@@ -13,16 +11,6 @@ def plot_loss_curve(history):
     plt.ylabel('loss')
     plt.legend()
     plt.show()
-
-
-def get_classification_report(
-    model, data_dir, batch_size=64,
-    steps=None, threshold=0.5, output_dict=False
-):
-    data = get_test_data_generator(data_dir, batch_size=batch_size)
-    predictions = predict(model, data, steps, threshold)
-    predictions = predictions.reshape((predictions.shape[0],))
-    return classification_report(data.classes, predictions, output_dict=output_dict)
 
 
 def visualize_conv_layers_single_img(
@@ -60,4 +48,3 @@ def visualize_conv_layers(model, imgs, conv_idx):
         visualize_conv_layers_single_img(
             activations=img_activs, conv_idx=conv_idx
         )
-
