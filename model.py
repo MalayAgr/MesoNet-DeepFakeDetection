@@ -78,6 +78,19 @@ def build_model(
     return model
 
 
+def get_activation_model(model, conv_idx):
+    conv_layers = [layer for layer in model.layers if 'conv' in layer.name]
+    selected_layers = [
+        layer for index, layer in enumerate(conv_layers)
+        if index in conv_idx
+    ]
+    activation_model = Model(
+        inputs=model.inputs,
+        outputs=[layer.output for layer in selected_layers]
+    )
+    return activation_model
+
+
 def evaluate_model(model, test_data_dir, batch_size):
     data = get_test_data_generator(test_data_dir, batch_size)
     return model.evalute(data)
