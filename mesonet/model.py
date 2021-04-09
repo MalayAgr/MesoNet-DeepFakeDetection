@@ -125,7 +125,7 @@ def make_prediction(
     return_probs=False,
     return_report=False,
 ):
-    model = load_model(model_path)
+    model = get_loaded_model(model_path)
     data = get_test_data_generator(data_dir, batch_size)
 
     probs, preds = predict(model, data, steps=None, threshold=threshold)
