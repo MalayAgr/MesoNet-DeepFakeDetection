@@ -1,4 +1,4 @@
-from cli import arg_parser
+from cli.parser import arg_parser
 
 
 def main():
