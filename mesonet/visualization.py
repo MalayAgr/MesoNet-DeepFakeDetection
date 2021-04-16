@@ -56,7 +56,11 @@ def visualize_conv_layers(model, imgs, conv_idx):
     Args:
         model (tf.keras.Model): The model whose layers are to be visualized.
         imgs (Numpy array): The images for which the layers are to be visualized.
-        conv_idx (list-like): The indices of the layers to be visualized (0-indexed).
+            The dimension of the array should be (x, HEIGHT, WIDTH, CHANNELS), where
+            x is the number of images. HEIGHT, WIDTH and CHANNELS should match the
+            inputs for the model.
+        conv_idx (list-like): The indices of the conv layers to be visualized (0-indexed).
+            The plots will be generated in the order the indices are mentioned.
     """
     activation_model = get_activation_model(model, conv_idx)
     activations = activation_model.predict(imgs)

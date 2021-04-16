@@ -50,7 +50,8 @@ def get_train_data_generator(
         train_data_dir (str): Path to the directory containing training data.
         batch_size (int): Size of the batches of the data.
         validation_split (float): Fraction of data to reserve for validation.
-            When None or 0.0, there is no reserved data. Defaults to None.
+            Should be between 0 and 1. When None or 0.0, there is no reserved data.
+            Defaults to None.
         use_default_augmentation (bool): If True, all augmentations applied in the
             MesoNet paper are added, in addition to the ones specified in augmentations.
             See https://github.com/DariusAf/MesoNet/issues/4#issuecomment-448694527.
