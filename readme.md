@@ -2,7 +2,7 @@
 
 The problem of misinformation has concerned me for a long time. Having witnessed the drastic effects of it in both my country and elsewhere, I think my concerns are rightly placed.
 
-This project is an attempt at quelling some of those concerns.
+Here, I make my small attempt in doing something about it.
 
 ## <!-- omit in toc --> Table of Contents
 
@@ -12,17 +12,20 @@ This project is an attempt at quelling some of those concerns.
 
 ## 1. Introduction
 
-This is part of my final year project, as required to finish my Bachelor's degree in Computer Science.
+This project is part of the requirements to finish my Bachelor's degree in Computer Science (2017-2021).
 
-It aims to solve a small part of the misinformation problem. In particular, I detail here my approach in implementing a CNN-based DeepFake detector, first detailed in a paper published by @DariusAf et al. in 2018 [[1]](#ref-1).
+It aims to demonstrate a solution to a small part of the misinformation problem. In particular, I detail here my approach in implementing a CNN-based DeepFake detector, first detailed in a paper published by Darius Afchar ([Github](https://github.com/DariusAf)) et al. in 2018 [[1]](#ref-1), called **MesoNet**.
+
+The overall project consists of three parts:
+
+- [Part 1: Model Construction and Training](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection) - This builds and trains various MesoNet variants, with the objective of obtaining multiple well-performing variants in the end. It is implemented using TensorFlow.
+- [Part 2: API](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API) - This is an API that can be used to fetch results from a trained MesoNet model. It is implemented using Django and the Django Rest Framework.
+- Part 3: Frontend - This is a Node.js app which uses the above API to allow any Internet user to explore the inner workings of MesoNet.
+
+You're currently reading about Part 1.
 
 ## 2. General Approach
 
-
-
 ## 3. References
 
-* <a  id="ref-1">[1]</a> Afchar, Darius, et al. [Mesonet: a compact facial video forgery detection network](https://arxiv.org/abs/1809.00888)
-* <a  id="ref-2">[2]</a> Djork-Arné Clevert, Thomas Unterthiner, & Sepp Hochreiter. (2015). [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)](https://arxiv.org/abs/1511.07289).
-* <a  id="ref-3">[3]</a> Andrew L. Maas. (2013). [Rectifier Nonlinearities Improve Neural Network Acoustic Models](https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf).
-* <a  id="ref-4">[4]</a> Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, & Ruslan Salakhutdinov (2014). [Dropout: A Simple Way to Prevent Neural Networks from Overfitting](http://jmlr.org/papers/v15/srivastava14a.html). Journal of Machine Learning Research, 15(56), 1929-1958.
+- <a  id="ref-1">[1]</a> Afchar, Darius, et al. [Mesonet: a compact facial video forgery detection network](https://arxiv.org/abs/1809.00888).
