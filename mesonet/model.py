@@ -105,6 +105,24 @@ def build_model(
     dropout=0.5,
     hidden_activation="lrelu",
 ):
+    """
+    Function to obtain a model exactly replicating the architecture in the paper.
+    See: https://arxiv.org/pdf/1809.00888v1.pdf and trained_models/model_schematic.png.
+    Note that the model is NOT compiled.
+
+    Args:
+        ip (tf.keras.Input): Represents the input characteristics of the model.
+            It should match the dimensions of the images in the dataset.
+            Defaults to Input(shape=(IMG_WIDTH, IMG_WIDTH, 3)).
+        activation (str): Activation function for the conv layers. Defaults to "relu".
+        dropout (float): Rate of dropout (between 0 and 1) for the Dropout layer.
+            Defaults to 0.5.
+        hidden_activation (str): Activation function after the hidden Dense layer.
+            Defaults to "lrelu".
+
+    Returns:
+        A tf.keras.Model instance encapsulating the built model.
+    """
     layer = conv2D(ip, filters=8, kernel_size=(3, 3), activation=activation)
 
     layer = conv2D(layer, filters=8, kernel_size=(5, 5), activation=activation)
@@ -128,10 +146,40 @@ def build_model(
 
 
 def get_loaded_model(path):
+    """
+    Function to load a saved model from a H5 file or .pd folder.
+
+    Args:
+        path (str): Path to the saved model.
+
+    Returns:
+        A tf.keras.Model instance with the loaded model.
+    """
     return load_model(path)
 
 
 def get_activation_model(model, conv_idx):
+    """
+    Function to obtain the "activation model" of a trained model.
+    An activation model is defined as a model which has the same input
+    As the trained model and whose output consists of the output at least one
+    Convolutional layer for the trained model. Since this outputs are obtained
+    After an activation function, hence the name.
+
+    Args:
+        model (tf.keras.Model): Model whose activation model is required.
+        conv_idx (list-like): Indices of the conv layers which should
+            be included in the output of the activation model (0-indexed).
+            The ordering of indices is important since the outputs (after prediction)
+            will be in the same order.
+
+    Returns:
+        A tf.keras.Model instance representing the activation model.
+    """
+
+    if not conv_idx:
+        raise ValueError("conv_idx requires at least one element")
+
     conv_layers = [layer for layer in model.layers if "conv" in layer.name]
     selected_layers = [conv_layers[i] for i in conv_idx]
     activation_model = Model(
@@ -140,12 +188,47 @@ def get_activation_model(model, conv_idx):
     return activation_model
 
 
-def evaluate_model(model, test_data_dir, batch_size):
+def evaluate_model(model, test_data_dir, batch_size=64):
+    """
+    Function to obtain evaluation metrics on a trained model.
+
+    Args:
+        model (tf.keras.Model): Model whose metrics are required.
+        test_data_dir (str): Path to directory containing the data to be used
+            for evaluation.
+        batch_size (int): Size of batches of the data. Defaults to 64.
+
+    Returns:
+        A list with values for all the metrics used when the model
+        was originally trained.
+    """
     data = get_test_data_generator(test_data_dir, batch_size)
     return model.evalute(data)
 
 
 def predict(model, data, steps=None, threshold=0.5):
+    """
+    Function to make predictions on data.
+    Note that this function can only handle a model with a sigmoid activation
+    At the output layer.
+
+    Args:
+        model (tf.keras.Model): Model to use for making predictions.
+        data: See https://www.tensorflow.org/api_docs/python/tf/keras/Model#predict.
+        steps (int): Total number of steps (batches of samples) before declaring the
+            prediction round finished. Ignored with the default value of None.
+            If data is a tf.data dataset and steps is None, predict will run until
+            the input dataset is exhausted.
+        threshold (float): Minimum probability to classify a prediction as
+            the positive class ('1'). Comparison used is >=. Defaults to 0.5.
+
+    Returns:
+        A two-tuple (x, y) where:
+            1. x is a Numpy array of dimension (NUM_IMGS, 1) containing the predicted
+                sigmoid probabilities for each image.
+            2. y is a Numpy array of dimension (NUM_IMGS, 1) containing the
+                predicted classes for each image.
+    """
     probs = model.predict(data, steps=steps, verbose=1)
     preds = np.where(probs >= threshold, 1, 0)
 
@@ -155,6 +238,37 @@ def predict(model, data, steps=None, threshold=0.5):
 
 
 def get_classification_report(true, preds, output_dict=False):
+    """
+    Function to obtain an ROC report for a set of predictions.
+
+    Args:
+        true (1D array-like): True labels.
+        preds (1D array-like): Predicted labels.
+        output_dict (bool): If True, outputs a dict rather than a str.
+            Defaults to False.
+
+    Returns:
+        1. When output_dict is False, a nicely formatted string with the ROC report.
+            Example:
+                        precision    recall  f1-score   support
+
+                0       0.96      0.94      0.95       773
+                1       0.96      0.97      0.97      1172
+
+         accuracy                           0.96      1945
+        macro avg       0.96      0.96      0.96      1945
+     weighted avg       0.96      0.96      0.96      1945
+
+        2. When output_dict is True, a dict with the ROC report:
+            Example:
+                {'label 1': {'precision':0.5,
+                             'recall':1.0,
+                             'f1-score':0.67,
+                             'support':1},
+                 'label 2': { ... },
+                 ...
+                 }
+    """
     return classification_report(true, preds, output_dict=output_dict)
 
 
@@ -166,6 +280,35 @@ def make_prediction(
     return_probs=False,
     return_report=False,
 ):
+    """
+    Function to obtain predictions from a saved model using data from a directory.
+
+    Args:
+        model_path (str): Path to the saved model.
+        data_dir (str): Path to the data on which predictions are to be made.
+        threshold (float): Minimum probability to classify a prediction as
+            the positive class ('1'). Comparison used is >=. The function also replaces
+            0/1 with the actual class names. Defaults to 0.5.
+        batch_size (int): Size of batches of data, used in initializing the data generator.
+            Defaults to 64.
+        return_probs (bool): If True, along with predicted labels, the predicted
+            probabilities are also included in the result. The probabilities are
+            converted to %. Since each predicted probability represents the
+            probability of the sample being in the +ve class, for samples belonging
+            to the -ve class, the probability is subtracted from 1.
+        return_report (bool): If True, an ROC report is also included in the result
+            as a str. Defaults to False.
+
+    Returns:
+        A two-tuple (x, y) where:
+            1. x is a Numpy array of dimension (NUM_IMGS, 2) when return_probs is
+                False and of (NUM_IMGS, 3) when return_probs is True. For each image,
+                a row vector in the format [filename, label, <prob>] is created,
+                where filename refers to the name of the image file, label is the
+                predicted label and <prob> is the optional predicted probability.
+            2. y is an empty string when return_report is False and the ROC report
+                when return_report is True.
+    """
     model = get_loaded_model(model_path)
     data = get_test_data_generator(data_dir, batch_size)
 
@@ -192,5 +335,14 @@ def make_prediction(
 
 
 def save_model_history(history, filename):
+    """
+    Function to dump a model's history into a pickle file.
+    This is useful in scenarios where you want to generate plots
+    Even after you have terminated the current sessions.
+
+    Args:
+        history (History instance): History of the model.
+        filename (str): Filename of the target file to which the history will be dumped.
+    """
     with open(filename, "wb") as f:
         pickle.dump(history.history, f)
