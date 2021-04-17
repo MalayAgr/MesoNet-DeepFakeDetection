@@ -59,6 +59,7 @@ def get_train_data_generator(
         augmentations (dict): Additional augmentations supported by ImageDataGenerator.
             If an augmentation conflicts with the default augmentations and
             use_default_augmentations is True, the latter takes precedence.
+            Defaults to None.
 
     Returns:
         A tuple in the format (train, val) where:
