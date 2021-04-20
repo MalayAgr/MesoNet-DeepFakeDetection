@@ -127,15 +127,15 @@ Sample images are shown below:
 
 - **Forged**
 
-| Train | ![](./imgs/train_forged_sample.jpg) |
+| Train | <img src="./imgs/train_forged_sample.jpg" width="100" height="100" /> |
 | ----- | ----------------------------------- |
-| Test  | ![](./imgs/test_forged_sample.jpg)  |
+| Test  | <img src="./imgs/test_forged_sample.jpg" width="100" height="100" />  |
 
 - **Real**
 
-| Train | ![](./imgs/train_real_sample.jpg) |
+| Train | <img src="./imgs/train_real_sample.jpg" width="100" height="100" /> |
 | ----- | --------------------------------- |
-| Test  | ![](./imgs/test_real_sample.jpg)  |
+| Test  | <img src="./imgs/test_real_sample.jpg" width="100" height="100" />  |
 
 ## 3. References
 
