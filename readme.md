@@ -125,17 +125,10 @@ Alternatively, you can use any dataset of your choice as long as the directory s
 
 Sample images are shown below:
 
-- **Forged**
-
-| Train | <img src="./imgs/train_forged_sample.jpg" width="100" height="100" /> |
-| ----- | ----------------------------------- |
-| Test  | <img src="./imgs/test_forged_sample.jpg" width="100" height="100" />  |
-
-- **Real**
-
-| Train | <img src="./imgs/train_real_sample.jpg" width="100" height="100" /> |
-| ----- | --------------------------------- |
-| Test  | <img src="./imgs/test_real_sample.jpg" width="100" height="100" />  |
+|       | Forged                                                                | Real                                                                |
+| ----- | --------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Train | <img src="./imgs/train_forged_sample.jpg" width="100" height="100" /> | <img src="./imgs/train_real_sample.jpg" width="100" height="100" /> |
+| Test  | <img src="./imgs/test_forged_sample.jpg" width="100" height="100" />  | <img src="./imgs/test_real_sample.jpg" width="100" height="100" />  |
 
 ## 3. References
 
