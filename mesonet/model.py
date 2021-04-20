@@ -3,9 +3,17 @@ import pickle
 import numpy as np
 from sklearn.metrics import classification_report
 from tensorflow.keras import Input, Model
-from tensorflow.keras.layers import (ELU, BatchNormalization, Conv2D, Dense,
-                                     Dropout, Flatten, LeakyReLU, MaxPooling2D,
-                                     ReLU)
+from tensorflow.keras.layers import (
+    ELU,
+    BatchNormalization,
+    Conv2D,
+    Dense,
+    Dropout,
+    Flatten,
+    LeakyReLU,
+    MaxPooling2D,
+    ReLU,
+)
 from tensorflow.keras.models import load_model
 
 from .data import get_test_data_generator
@@ -107,7 +115,7 @@ def build_model(
 ):
     """
     Function to obtain a model exactly replicating the architecture in the paper.
-    See: https://arxiv.org/pdf/1809.00888v1.pdf and trained_models/model_schematic.png.
+    See: https://arxiv.org/pdf/1809.00888v1.pdf and imgs/model_schematic.png.
     Note that the model is NOT compiled.
 
     Args:

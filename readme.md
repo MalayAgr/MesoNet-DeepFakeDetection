@@ -10,6 +10,7 @@ Here, I make my small attempt in doing something about it.
 - [2. General Approach](#2-general-approach)
   - [2.1. The Code](#21-the-code)
   - [2.2. The Model](#22-the-model)
+  - [The Data](#the-data)
 - [3. References](#3-references)
 
 ## 1. Introduction
@@ -44,13 +45,14 @@ The model, as mentioned above, is based on a paper published by Darius Afchar et
 By default, the CLI works with the architecture detailed in the paper, which is as follows:
 
 - `3 X 256 X 256` input layer, with the input being scaled by 255 and augmentations applied on it.
-- Two convolutional layers with `8` filters, `3 x 3` in size and stride of `1`, followed by max pooling layers with pooling window of `2 x 2`.
+- Convolutional layer with `8` filters, `3 x 3` in size and stride of `1`, followed by a max pooling layer of size `2 x 2`.
+- Convolutional layer with `8` filters, `5 x 5` in size and stride of `1`, followed by a max pooling layer of size `2 x 2`.
 - Two convolutional layers with `16` filters, `5 x 5` in size and stride of `1`, followed by max pooling layers with pooling window of `2 x 2`.
 - Fully-connected layer with `16` units.
 - Fully-connected output layer with `1` unit and `sigmoid` activation.
 
 <div align="center" style="padding: 10px;">
-    <img src="trained_models/model_schematic.png" width="500" height="600" alt="Model">
+    <img src="imgs/model_schematic.png" width="500" height="600" alt="Model">
     <div>
         <em>Source: <a href="#ref-1">[1]</a></em>
     </div>
@@ -60,12 +62,14 @@ This leads to a modest 27,977 trainable parameters for the model.
 
 While this architecture is closely followed, experiments with various activation functions have been carried out and the code is designed such that it is extremely convenient to switch the activation function for the entire model. Specifically, in addition to using the standard ReLU activation, experiments with ELU [[2]](#ref-2) and LeakyReLU [[3]](#ref-3) have also been carried out.
 
-ReLU is the activation function of choice since there aren't any negative values in the training data, leading to potentially no dead neurons. Additionally, there exists a LeakyReLU activation after the fully-connected 16-unit layer. There is no apparent reason behind this other than this is what the paper uses.
+ReLU is the activation function of choice since there is no apparent risk of dead neurons. Additionally, there exists a LeakyReLU activation after the fully-connected 16-unit layer. There is no apparent reason behind this other than this is what the paper uses.
 
 In addition to this,some modern-day conventional practices have been added to the model. Specifically, the following two practices have been adopted:
 
 - Bath Normalization - Batch Normalization is added after each convolutional layer to improve convergence speed and to combat overfitting.
 - Dropout [[4]](#ref-4) - Dropout is added after the fully-connected 16-unit layer to combat overfitting.
+
+### The Data
 
 ## 3. References
 
