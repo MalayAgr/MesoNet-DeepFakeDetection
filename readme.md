@@ -77,7 +77,9 @@ Additionally, some modern-day conventional practices have been added to the mode
 
 ### 2.3. The Data
 
-A dataset collected by the authors of the paper is used to train the models provided in this repo, called the **DeepFake dataset**. You can download it from [here](https://my.pcloud.com/publink/show?code=XZLGvd7ZI9LjgIy7iOLzXBG5RNJzGFQzhTRy).
+A dataset collected by the authors of the paper is used to train the models provided in this repo, called the **DeepFake dataset**. You can download it [here](https://my.pcloud.com/publink/show?code=XZLGvd7ZI9LjgIy7iOLzXBG5RNJzGFQzhTRy).
+
+> **Note**: For some reason, the downloaded dataset's training samples are in a folder called `train:test`. You might face issues when unzipping this. Rename the folder to `train`.
 
 It contains a training set and a test set. The overall directory structure is as follows:
 
@@ -87,19 +89,21 @@ It contains a training set and a test set. The overall directory structure is as
     │   ├── real/
     │   │   ├── img1.png
     │   │   └── img2.png
-    │   └── forged/
+    │   └── df/
     │       ├── img1.png
     │       └── img2.png
-    └── test/
+    └── validation/
         ├── real/
         │   ├── img1.png
         │   └── img2.png
-        └── forged/
+        └── df/
             ├── img1.png
             └── img2.png
 ```
 
-> **Note**: The paper refers to the validation set as the test set, mainly because of when it was written.
+> **Note**: `df` is short for deepfake.
+
+> **Note**: The paper refers to the test set as the validation set due to the jargon used in 2018.
 
 > **Note**: The name of the classes can be changed by renaming the `real` and `forged` directories.
 
@@ -126,6 +130,8 @@ To combat this, the size can be increased using this [script](./bloat_data.py). 
 |          | 7948                           | 11509                    | 19457 |
 
 > **Note**: It may be the case that the test set is slightly "easier" than the training set. That is, you may notice that your model performs better on the test set by a few points.
+
+> **Note**: The provided script works _only_ on the original dataset, with the structure shown above.
 
 Alternatively, you can use any dataset of your choice as long as the directory structure matches the one above.
 
