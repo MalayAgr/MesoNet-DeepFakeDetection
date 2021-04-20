@@ -7,11 +7,15 @@ Here, I make my small attempt in doing something about it.
 ## <!-- omit in toc --> Table of Contents
 
 - [1. Introduction](#1-introduction)
-- [2. General Approach](#2-general-approach)
+- [2. Approach](#2-approach)
   - [2.1. The Code](#21-the-code)
   - [2.2. The Model](#22-the-model)
   - [2.3. The Data](#23-the-data)
-- [3. References](#3-references)
+- [3. Results](#3-results)
+  - [3.1. Best Model](#31-best-model)
+  - [3.2. Next Best Model](#32-next-best-model)
+  - [3.3. Notes on "best"](#33-notes-on-best)
+- [4. References](#4-references)
 
 ## 1. Introduction
 
@@ -27,7 +31,7 @@ The overall project consists of three parts:
 
 **You're currently reading about Part 1**.
 
-## 2. General Approach
+## 2. Approach
 
 ### 2.1. The Code
 
@@ -109,7 +113,7 @@ The distribution of images is as follows ([source](https://github.com/DariusAf/M
 
 > **Note**: It may be that TensorFlow doesn't detect all 19,509 images. In my case, it detected 19,457 images. The below numbers are with respect to that.
 
-In reality, thought, it may be the case that the you may NOT achieve the claimed accuracy in the paper. This could be because of the size of the dataset, which has potentially too many images in the test set.
+In reality, though, you may NOT achieve the claimed accuracy in the paper. This could be because of the size of the dataset, which has potentially too many images in the test set.
 
 To combat this, the size can be increased using this [script](./bloat_data.py). It takes all the images and creates a new dataset by holding back only 10% of the data (randomly) for the test set (instead of the ~36.7% in the original dataset). This changes the distribution to:
 
@@ -119,7 +123,7 @@ To combat this, the size can be increased using this [script](./bloat_data.py). 
 | Test     | 773                            | 1172                     | 1945  |
 |          | 7948                           | 11509                    | 19457 |
 
-The dataset used to train the pre-trained models is available [here](https://drive.google.com/drive/folders/15E6NZr9vhsOfX_nkOtiYkIpWZwtpNi_7?usp=sharing).
+> **Note**: It may be the case that the test set is slightly "easier" than the training set. That is, you may notice that your model performs better on the test set by a few points.
 
 Alternatively, you can use any dataset of your choice as long as the directory structure matches the one above.
 
@@ -130,9 +134,78 @@ Sample images are shown below:
 | Train | <img src="./imgs/train_forged_sample.jpg" width="100" height="100" /> | <img src="./imgs/train_real_sample.jpg" width="100" height="100" /> |
 | Test  | <img src="./imgs/test_forged_sample.jpg" width="100" height="100" />  | <img src="./imgs/test_real_sample.jpg" width="100" height="100" />  |
 
-## 3. References
+## 3. Results
+
+This section summarizes results from the two pre-trained models provided in [`trained_models`](./trained_models). Here, "best" is in terms of accuracy.
+
+The dataset used to train these models is available [here](https://drive.google.com/drive/folders/15E6NZr9vhsOfX_nkOtiYkIpWZwtpNi_7?usp=sharing). In both the cases, the default augmentations used in the paper have been applied on the dataset. These are listed [here]().
+
+Moreover, 20% of the training data was reserved for the validation set. This led to the following distribution of training data:
+
+| Set        | Size of the forged image class | Size of real image class | Total |
+| ---------- | ------------------------------ | ------------------------ | ----- |
+| Training   | 5740                           | 8270                     | 14020 |
+| Validation | 1435                           | 2067                     | 3502  |
+|            | 7175                           | 10337                    | 17512 |
+
+### 3.1. Best Model
+
+Training was meant to be carried out for _30_ epochs with a batch size of _32_. A learning rate schedule with an initial learning rate of _0.001_, decay rate of _0.10_ and a maximum decay limit of _0.000001_ was also used. In fact, the model was trained for only _18_ epochs since the results were already satisfactory.
+
+For this particular model, the number of steps after which one step of decay should be applied is calculates dynamically based on a decay limit (the lowest learning rate), decay steps and the number of epochs. The reason behind this is that using a fixed number made the decay either too slow or too fast. This makes it more gradual. This feature wasn't implemented during training of the second model.
+
+Final metrics after 18 epochs are as follows:
+
+|            | Loss   | Accuracy |
+| ---------- | ------ | -------- |
+| Train      | 0.1583 | 93.53%   |
+| Validation | 0.2027 | 92.52%   |
+
+The loss curve is shown below (blue - validation; orange - train):
+
+<img src="./imgs/model1_18epochs_valacc0.9252_loss.png"/>
+
+On the test set, the model reported an accuracy of 96.25%.
+
+The ROC report (generated using `sklearn`) is as follows:
+
+|                  | Precision | Recall | F1-Score | Support |
+| ---------------- | --------- | ------ | -------- | ------- |
+| Forged Class     | 0.96      | 0.94   | 0.95     | 773     |
+| Real Class       | 0.96      | 0.97   | 0.97     | 1172    |
+| Accuracy         |           |        | 0.96     | 1945    |
+| Macro Average    | 0.96      | 0.96   | 0.96     | 1945    |
+| Weighted Average | 0.96      | 0.96   | 0.96     | 1945    |
+
+### 3.2. Next Best Model
+
+Training was meant to be carried out for _18_ epochs with a batch size of _64_. A learning rate schedule with an initial learning rate of _0.001_, decay rate of _0.10_, decayed every _5_ epochs. The model was trained for _17_ epochs.
+
+While training loss and accuracy were not recorded for later reference (noob, I know), the validation accuracy was ~89%.
+
+The loss curve is shown below:
+
+<img src="./imgs/model2_17epochs_valacc0.89_loss.png"/>
+
+On the test set, the model reported an accuracy of 90.79%.
+
+The ROC report:
+
+|                  | Precision | Recall | F1-Score | Support |
+| ---------------- | --------- | ------ | -------- | ------- |
+| Forged Class     | 0.90      | 0.87   | 0.88     | 773     |
+| Real Class       | 0.91      | 0.93   | 0.92     | 1172    |
+| Accuracy         |           |        | 0.91     | 1945    |
+| Macro Average    | 0.91      | 0.90   | 0.90     | 1945    |
+| Weighted Average | 0.91      | 0.91   | 0.91     | 1945    |
+
+### 3.3. Notes on "best"
+
+While by looking at the numbers, it does make sense to call the first model the "best" model, I personally prefer the second model due to its more modest numbers and the test set showing similar performance to the validation set. Your conclusions are on you. :smiley:
+
+## 4. References
 
 - <a  id="ref-1">[1]</a> Afchar, Darius, et al. [Mesonet: a compact facial video forgery detection network](https://arxiv.org/abs/1809.00888).
 - <a  id="ref-2">[2]</a> Djork-Arné Clevert, Thomas Unterthiner, & Sepp Hochreiter. (2015). [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)](https://arxiv.org/abs/1511.07289).
-- <a  id="ref-3">[3]</a> Andrew L. Maas. (2013). [Rectifier Nonlinearities Improve Neural Network Acoustic Models](https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf).
+- <a  id="ref-3">[3]</a> Andrew L. Maas. (2013). [Rectifier Nonlinearities Improve Neural Network Acoustic Models](https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf).>
 - <a  id="ref-4">[4]</a> Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, & Ruslan Salakhutdinov (2014). [Dropout: A Simple Way to Prevent Neural Networks from Overfitting](http://jmlr.org/papers/v15/srivastava14a.html). Journal of Machine Learning Research, 15(56), 1929-1958.
