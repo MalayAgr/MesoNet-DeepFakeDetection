@@ -11,11 +11,13 @@ Here, I make my small attempt in doing something about it.
   - [2.1. The Code](#21-the-code)
   - [2.2. The Model](#22-the-model)
   - [2.3. The Data](#23-the-data)
+  - [2.4. Requirements](#24-requirements)
 - [3. Results](#3-results)
   - [3.1. Best Model](#31-best-model)
   - [3.2. Next Best Model](#32-next-best-model)
   - [3.3. Notes on "best"](#33-notes-on-best)
-- [4. References](#4-references)
+- [4. Documentation](#4-documentation)
+- [5. References](#5-references)
 
 ## 1. Introduction
 
@@ -37,7 +39,7 @@ The overall project consists of three parts:
 
 The main focus in constructing and training the model was to make it modular and portable. A secondary focus was also to make it easier you to use MesoNet without tinkering with the code. With these objectives in mind, the code has been broken up into two packages:
 
-- [`mesonet`](./mesonet/) - This is the main package containing modules which construct and build MesoNet variants. While not currently set up as a PyPI package, you can copy the directory to their project and obtain the necessary functionality to build, train and obtain predictions from MesoNet.
+- [`mesonet`](./mesonet/) - This is the main package containing modules which construct and build MesoNet variants. While not currently set up as a PyPI package, you can copy the directory to your project and obtain the necessary functionality to build, train and obtain predictions from MesoNet.
 - [`cli`](./cli/) - This package provides a command line interface (CLI) that can be used to both train and obtain predictions from MesoNet. This allows you to use MesoNet without tinkering with the code. Currently, it only supports training the architecture as detailed in the paper. Additionally, the `mesonet.py` file provides an entrypoint to the CLI.
 
 ### 2.2. The Model
@@ -134,6 +136,20 @@ Sample images are shown below:
 | Train | <img src="./imgs/train_forged_sample.jpg" width="100" height="100" /> | <img src="./imgs/train_real_sample.jpg" width="100" height="100" /> |
 | Test  | <img src="./imgs/test_forged_sample.jpg" width="100" height="100" />  | <img src="./imgs/test_real_sample.jpg" width="100" height="100" />  |
 
+### 2.4. Requirements
+
+The project has been developed on Python 3.8.8. It is recommended that you stick to this version to ensure that things do not break.
+
+Other requirements are as follows:
+
+| Package      | Version |
+| ------------ | ------- |
+| TensorFlow   | 3.4.1   |
+| Matplotlib   | 2.4.1   |
+| Scikit-Learn | 0.24.1  |
+
+> **Note**: Worried about Numpy and the other stuff? Don't be. These will be installed automatically by pip if you run the standard command to install packages using a requirements.txt file.
+
 ## 3. Results
 
 This section summarizes results from the two pre-trained models provided in [`trained_models`](./trained_models). Here, "best" is in terms of accuracy.
@@ -205,9 +221,13 @@ The ROC report:
 
 While by looking at the numbers, it does make sense to call the first model the "best" model, I personally prefer the second model due to its more modest numbers and the test set showing similar performance to the validation set. Your conclusions are on you. :smiley:
 
-## 4. References
+## 4. Documentation
+
+The documentation for the `mesonet` module and details on using the CLI are available in the `docs` folder and [here]().
+
+## 5. References
 
 - <a  id="ref-1">[1]</a> Afchar, Darius, et al. [Mesonet: a compact facial video forgery detection network](https://arxiv.org/abs/1809.00888).
 - <a  id="ref-2">[2]</a> Djork-Arné Clevert, Thomas Unterthiner, & Sepp Hochreiter. (2015). [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)](https://arxiv.org/abs/1511.07289).
-- <a  id="ref-3">[3]</a> Andrew L. Maas. (2013). [Rectifier Nonlinearities Improve Neural Network Acoustic Models](https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf).>
+- <a  id="ref-3">[3]</a> Andrew L. Maas. (2013). [Rectifier Nonlinearities Improve Neural Network Acoustic Models](https://ai.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf).
 - <a  id="ref-4">[4]</a> Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, & Ruslan Salakhutdinov (2014). [Dropout: A Simple Way to Prevent Neural Networks from Overfitting](http://jmlr.org/papers/v15/srivastava14a.html). Journal of Machine Learning Research, 15(56), 1929-1958.
