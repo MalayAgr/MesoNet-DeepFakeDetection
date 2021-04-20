@@ -150,9 +150,13 @@ Moreover, 20% of the training data was reserved for the validation set. This led
 
 ### 3.1. Best Model
 
-Training was meant to be carried out for _30_ epochs with a batch size of _32_. A learning rate schedule with an initial learning rate of _0.001_, decay rate of _0.10_ and a maximum decay limit of _0.000001_ was also used. In fact, the model was trained for only _18_ epochs since the results were already satisfactory.
+Training was meant to be carried out for _30_ epochs with a batch size of _32_.
 
-For this particular model, the number of steps after which one step of decay should be applied is calculates dynamically based on a decay limit (the lowest learning rate), decay steps and the number of epochs. The reason behind this is that using a fixed number made the decay either too slow or too fast. This makes it more gradual. This feature wasn't implemented during training of the second model.
+For this particular model, the number of steps after which one step of decay should be applied is calculated dynamically based on a decay limit (the lowest learning rate), decay steps and the number of epochs. The reason behind this is that using a fixed number made the decay either too slow or too fast. This makes it more gradual. This feature wasn't implemented during training of the second model.
+
+A learning rate schedule with an initial learning rate of _0.001_, decay rate of _0.10_ and a maximum decay limit of _0.000001_ was also used.
+
+In fact, the model was trained for only _18_ epochs since the results were already satisfactory.
 
 Final metrics after 18 epochs are as follows:
 
