@@ -1,9 +1,8 @@
-import os
 import glob
-from math import floor
+import os
 import random
 import shutil
-
+from math import floor
 
 DATA_DIR = "/media/malay_agarwal/New Volume/temp_data"
 TARGET_DIR = "/media/malay_agarwal/New Volume/new_data"
