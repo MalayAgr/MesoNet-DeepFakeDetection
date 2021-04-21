@@ -4,11 +4,16 @@ import random
 import shutil
 from math import floor
 
-DATA_DIR = "/media/malay_agarwal/New Volume/temp_data"
-TARGET_DIR = "/media/malay_agarwal/New Volume/new_data"
+# Path to directory where the downloaded data is
+DATA_DIR = ""
+# Path to directory where new dataset should be created
+TARGET_DIR = ""
 
+# Name of the sub-directory containing real images in DATA_DIR
 REAL_DIR = "real"
+# Name of the sub-directory containing fake images in DATA_DIR
 FAKE_DIR = "df"
+# Amount of data that should be put in the test set
 PROP = 0.10
 
 
