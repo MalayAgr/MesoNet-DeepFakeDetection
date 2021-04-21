@@ -27,6 +27,12 @@ def create_target_dirs():
 
 
 def main():
+    if not os.path.exists(DATA_DIR):
+        raise FileNotFoundError(f"{DATA_DIR} does not exist")
+
+    if not os.path.isdir(DATA_DIR):
+        raise NotADirectoryError(f"{DATA_DIR} is not a directory")
+
     shutil.rmtree(TARGET_DIR, ignore_errors=True)
 
     path = os.path.join(DATA_DIR, "**", "*.jpg")
@@ -60,14 +66,10 @@ def main():
         )
 
         for img in imgs:
-            filename = os.path.basename(img)
-            filename = os.path.join(REAL_DIR if REAL_DIR in img else FAKE_DIR, filename)
-            dst = (
-                os.path.join(TARGET_DIR, "test", filename)
-                if img in selected
-                else os.path.join(TARGET_DIR, "train", filename)
-            )
-            shutil.copyfile(img, dst)
+            leaf_dir = REAL_DIR if REAL_DIR in img else FAKE_DIR
+            intr_dir = "test" if img in selected else "train"
+            dst = os.path.join(TARGET_DIR, intr_dir, leaf_dir)
+            shutil.copy(img, dst)
 
         prompt = input("Try again? [Yy/Nn] ")
         if prompt in ["n", "N"]:
