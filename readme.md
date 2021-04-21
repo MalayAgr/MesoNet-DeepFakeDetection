@@ -229,7 +229,7 @@ While by looking at the numbers, it does make sense to call the first model the 
 
 ## 4. Documentation
 
-The documentation for the `mesonet` module and details on using the CLI are available in the `docs` folder and [here]().
+The documentation for the `mesonet` module and details on using the CLI are available in the [`docs`](./docs/) folder and [here](https://malayagarwal-lee.github.io/MesoNet-DeepFakeDetection/).
 
 ## 5. References
 

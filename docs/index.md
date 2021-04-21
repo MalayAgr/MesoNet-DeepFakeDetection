@@ -1,5 +1,7 @@
 # <!-- omit in toc --> Documentation
 
+Here, you can find the documentation for the `mesonet` module and a tutorial on using the CLI.
+
 ## <!-- omit in toc --> Table of Contents
 
 - `mesonet` Module
