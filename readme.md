@@ -121,7 +121,7 @@ The distribution of images is as follows ([source](https://github.com/DariusAf/M
 
 In reality, though, you may NOT achieve the claimed accuracy in the paper. This could be because of the size of the dataset, which has potentially too many images in the test set.
 
-To combat this, the size can be increased using this [script](./bloat_data.py). It takes all the images and creates a new dataset by holding back only 10% of the data (randomly) for the test set (instead of the ~36.7% in the original dataset). This changes the distribution to:
+To combat this, the size can be increased using this [script](./bloat_data.py). It takes all the images and creates a new dataset by holding back only 10% of the data (randomly) for the test set (instead of the ~36.7% in the original dataset). This will arbitrarily change the distribution. You can keep running the script until you obtain a satisfactory split. In my run, the distribution used was:
 
 | Set      | Size of the forged image class | Size of real image class | Total |
 | -------- | ------------------------------ | ------------------------ | ----- |
@@ -144,7 +144,7 @@ Sample images are shown below:
 
 ### 2.4. Requirements
 
-The project has been developed on Python 3.8.8. It is recommended that you stick to this version to ensure that things do not break.
+The project has been developed on Python 3.8.8. It is recommended that you use this version to ensure that things do not break.
 
 Other requirements are as follows:
 
