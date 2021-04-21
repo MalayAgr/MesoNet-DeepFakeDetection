@@ -51,7 +51,7 @@ def main():
         train_r_len = len(
             [1 for img in imgs if REAL_DIR in img and img not in selected]
         )
-        train_f_len = num_imgs - (test_size + train_r_len)
+        train_f_len = train_size - train_r_len
         test_r_len = len([1 for img in selected if REAL_DIR in img])
         test_f_len = test_size - test_r_len
 
