@@ -83,7 +83,7 @@ def conv2D(ip, filters, kernel_size, activation, padding="same", pool_size=(2, 2
     return MaxPooling2D(pool_size=pool_size, padding=padding)(layer)
 
 
-def fully_connected_layer(ip, activation, dropout):
+def fully_connected_layer(ip, units, activation, dropout):
     """
     Function to obtain an FCC 'block' with the following layers:
         - Dense layer with 16 neurons.
@@ -92,6 +92,7 @@ def fully_connected_layer(ip, activation, dropout):
 
     Args:
         ip (tf.keras.layers, Numpy array or list-like): Input for the Dense layer.
+        units (int): Number of neurons in the Dense layer.
         activation (str): Activation function to use. Can be:
             - 'relu': ReLU activation.
             - 'elu': ELU activation.
@@ -102,7 +103,7 @@ def fully_connected_layer(ip, activation, dropout):
     Returns:
         A tf.keras.layers instance encapsulating the block.
     """
-    layer = Dense(16)(ip)
+    layer = Dense(units)(ip)
     layer = activation_layer(layer, activation, *[0.1])
     return Dropout(rate=dropout)(layer)
 
@@ -144,7 +145,9 @@ def build_model(
     layer = Flatten()(layer)
     layer = Dropout(rate=dropout)(layer)
 
-    layer = fully_connected_layer(layer, activation=hidden_activation, dropout=dropout)
+    layer = fully_connected_layer(
+        layer, units=16, activation=hidden_activation, dropout=dropout
+    )
 
     op_layer = Dense(1, activation="sigmoid")(layer)
 
