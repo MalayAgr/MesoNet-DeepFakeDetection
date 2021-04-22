@@ -19,6 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: "Documentation"
+baseurl: "https://malayagarwal-lee.github.io/MesoNet-DeepFakeDetection/"
 twitter_username: MalayAgr
 github_username:  MalayAgarwal-Lee
 
@@ -27,6 +28,14 @@ remote_theme: pmarsceill/just-the-docs
 color_scheme: dark
 plugins:
   - jekyll-feed
+
+# Aux links for the upper right navigation
+aux_links:
+  "See on GitHub":
+    - "https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/"
+
+# Makes Aux links open in a new tab. Default is false
+aux_links_new_tab: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
