@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: "Documentation"
+title: "MesoNet: Docs"
 baseurl: "/MesoNet-DeepFakeDetection"
 url: "https://malayagarwal-lee.github.io"
 
