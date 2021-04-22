@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 
-<img src="{{ site.url }}/assets/imgs/avatar.png" style="border-radius:50%;height:auto;overflow:hidden" alt width="260" height="260">
+<img src="{{ site.baseurl }}/assets/imgs/avatar.png" style="border-radius:50%;height:auto;overflow:hidden" alt width="260" height="260">
 
 Hi, I am Malay Agarwal!
 
