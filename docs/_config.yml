@@ -20,7 +20,7 @@
 
 title: "Documentation"
 baseurl: "/MesoNet-DeepFakeDetection"
-url: "https://malayagarwal-lee.github.io/"
+url: "https://malayagarwal-lee.github.io"
 
 # Build settings
 remote_theme: pmarsceill/just-the-docs
