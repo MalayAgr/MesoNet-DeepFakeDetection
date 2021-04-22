@@ -1,7 +1,6 @@
 ---
 layout: page
 title: About
-permalink: /about/
 ---
 
 <img src="/assets/imgs/avatar.png" style="border-radius:50%;height:auto;overflow:hidden" alt width="260" height="260">
