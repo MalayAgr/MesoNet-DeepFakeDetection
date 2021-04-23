@@ -349,3 +349,6 @@ This is useful in scenarios where you want to generate plots even after you have
 | ------------- | ----------------------------------------------------------------------- |
 | `history`     | `History` instance: History of the model.                               |
 | `filename`    | `str`: Filename of the target file to which the history will be dumped. |
+
+{: .text-center}
+[Back to top](#-jump-to)

@@ -30,8 +30,12 @@ plugins:
 permalink: pretty
 # Aux links for the upper right navigation
 aux_links:
-  "See on GitHub":
+  "Part 1":
     - "https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/"
+  "Part 2":
+    - "https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/"
+  "Part 3":
+    - "https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-WebApp/"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
