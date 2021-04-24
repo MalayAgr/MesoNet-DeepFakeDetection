@@ -17,7 +17,7 @@ grand_parent: "Part 1: Model Construction and Training"
 - [Note on Directory Structure](#note-on-directory-structure)
 - [Note on Augmentations](#note-on-augmentations)
 - [Core Functions](#core-functions)
-  - [`get_train_data_generator(train_data_dir, batch_size, validation_split=None, use_default_augmentation=True, augmentations=None)`](#get_train_data_generatortrain_data_dir-batch_size-validation_splitnone-use_default_augmentationtrue-augmentationsnone)
+  - {: .fs-3}[`get_train_data_generator(train_data_dir, batch_size, validation_split=None, use_default_augmentation=True, augmentations=None)`](#get_train_data_generatortrain_data_dir-batch_size-validation_splitnone-use_default_augmentationtrue-augmentationsnone)
   - [`get_test_data_generator(test_data_dir, batch_size, shuffle=False)`](#get_test_data_generatortest_data_dir-batch_size-shufflefalse)
 - [Helper Functions](#helper-functions)
   - [`_get_datagen(use_default_augmentation=True, **kwargs)`](#_get_datagenuse_default_augmentationtrue-kwargs)
