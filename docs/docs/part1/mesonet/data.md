@@ -54,7 +54,7 @@ It is possible to override these values or add more augmentations of your own. A
 
 [[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/d176ac0173f49bdd178b335d8c8fa62da2b2ad1a/mesonet/data.py#L37)
 
-Function to obtain iterators with data to train a model. The size of the images yielded is determined by IMG_WIDTH in `mesonet.utils` and the numbers of channels is always 3 (RGB).
+Function to obtain iterators with data to train a model. The size of the images yielded is determined by `IMG_WIDTH` in `mesonet.utils` and the numbers of channels is always 3 (RGB).
 
 It creates a `ImageDataGenerator` with the the given augmentations and uses the `.flow_from_directory()` method to return a training split and optionally, a validation split.
 
@@ -124,3 +124,6 @@ You'll probably not need to use this.
 | `use_default_augmentation` | `bool`: If True, all augmentations applied in the MesoNet paper are added, in addition to the ones specified in `augmentations`. See [Note on Augmentations](#note-on-augmentations). Defaults to True.                 |
 | `**kwargs`                 | `dict`: Additional augmentations supported by `ImageDataGenerator`. If an augmentation conflicts with the default augmentations and `use_default_augmentations` is True, the latter takes precedence. Defaults to None. |
 | **Returns**                | An `ImageDataGenerator` object with specified augmentations.                                                                                                                                                            |
+
+{: .text-center}
+[Back to top](#-jump-to)

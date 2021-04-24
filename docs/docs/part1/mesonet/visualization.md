@@ -54,7 +54,7 @@ An example plot is shown below (showing the first layer of one of the pre-traine
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`       | `tf.keras.Model`: Model whose layers are to be visualized.                                                                                                                                                                            |
 | `imgs`        | `np.array`: Images for which the layers are to be visualized. The dimension of the array should be `(x, HEIGHT, WIDTH, CHANNELS)`, where x is the number of images. HEIGHT, WIDTH and CHANNELS should match the inputs for the model. |
-| `conv_idx`    | `list`-like: Indices of the convolutional layers to be visualized (0-indexed). The plots will be generated in the order the indices are mentioned.                                                                                             |
+| `conv_idx`    | `list`-like: Indices of the convolutional layers to be visualized (0-indexed). The plots will be generated in the order the indices are mentioned.                                                                                    |
 
 ## Helper Functions
 
@@ -66,7 +66,10 @@ Function to visualize output of multiple convolutional layers for a single image
 
 It takes the outputs of the specific convolutional layers for a single image and sequentially generates the plots for each layer. This is the function which actually generates the plots of the layers. It exists only to aide `visualize_conv_layers()` and you probably won't need to use it.
 
-| **Arguments** |                                                                                                                                           |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `activations` | `list-like`: Computed outputs of convolutional layers for a image. It should be list-like containing Numpy arrays.                                 |
+| **Arguments** |                                                                                                                                                    |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activations` | `list`-like: Computed outputs of convolutional layers for a image. It should contain Numpy arrays.                                                 |
 | `conv_idx`    | `list`-like: Indices of the convolutional layers to be visualized (0-indexed). The plots will be generated in the order the indices are mentioned. |
+
+{: .text-center}
+[Back to top](#-jump-to)
