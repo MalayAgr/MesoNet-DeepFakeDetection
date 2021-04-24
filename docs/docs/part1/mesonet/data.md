@@ -16,6 +16,7 @@ grand_parent: "Part 1: Model Construction and Training"
 
 - [Note on Directory Structure](#note-on-directory-structure)
 - [Note on Augmentations](#note-on-augmentations)
+- [Note on `bloat_data.py`](#note-on-bloat_datapy)
 - [Core Functions](#core-functions)
   - {: .fs-3}[`get_train_data_generator(train_data_dir, batch_size, validation_split=None, use_default_augmentation=True, augmentations=None)`](#get_train_data_generatortrain_data_dir-batch_size-validation_splitnone-use_default_augmentationtrue-augmentationsnone)
   - [`get_test_data_generator(test_data_dir, batch_size, shuffle=False)`](#get_test_data_generatortest_data_dir-batch_size-shufflefalse)
@@ -47,6 +48,57 @@ By default, `get_train_data_generator()` uses the augmentations applied in the o
 - `horizontal_flip`: `True`
 
 It is possible to override these values or add more augmentations of your own. Also, note that a rescaling by 255 is always applied to the images (`rescale=1.0 / 255`).
+
+## Note on `bloat_data.py`
+
+In my experiments, I found that the [dataset](https://my.pcloud.com/publink/show?code=XZLGvd7ZI9LjgIy7iOLzXBG5RNJzGFQzhTRy) used has too many images in the validation split. Almost 37% of the total data has been reserved for testing. You can take a look at the distribution [here](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection#23-the-data).
+
+> **Note**: In today's jargon, what the paper refers to as the validation split is called the test split.
+
+In case you come to the same conclusions, the project comes with a [script](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/main/bloat_data.py) which takes all the images across both the splits and creates a new dataset, where only a small portion (by default, 10%) of the data is reserved for testing.
+
+The original dataset has the following structure:
+
+```bash
+└── data/
+    ├── train/
+    │   ├── real/
+    │   │   ├── img1.png
+    │   │   └── img2.png
+    │   └── df/
+    │       ├── img1.png
+    │       └── img2.png
+    └── validation/
+        ├── real/
+        │   ├── img1.png
+        │   └── img2.png
+        └── df/
+            ├── img1.png
+            └── img2.png
+```
+
+Given this structure, using the script is simple. You'll notice that it defines 5 global variables. You can change the values of these variables to configure the script.
+
+- `DATA_DIR` - This should be a `str` containing the path to the directory where the original dataset is stored. Note that it should be the top-level directory. This means that, in the above structure, this variable should be `data/`.
+- `TARGET_DIR` - This should be a `str` containing the path to the directory where you want the script to create your new dataset. Don't worry about the directory not existing because the script handles that for you.
+- `REAL_DIR` - This is the name of the sub-directory in your original dataset where images belonging to the real class are stored. For example, if your real images are in `data/train/real`, then this should be `real`. Note that the name of the directory should be the same in both the train and validation split.
+- `FAKE_DIR` - This is the same as `REAL_DIR` except it refers to the deepfake class.
+- `PROP` - This is the proportion of the data that should be in test split of the new dataset.
+
+Once you've set these variables, you can run the script as:
+
+```bash
+$ python bloat_data.py
+Creating directories at new_data/....
+Found 19456 images in deepfake_database/....
+Copying 17511 files to new_data/train/....
+Copying 1945 files to /new_data/test/....
+The training set will have 10376 real images and 7135 fake images....
+The test set will have 1132 real images and 813 fake images...
+Try again? [Yy/Nn]
+```
+
+The script will ask you whether you want to repeat the process. If yes, it will undo it's work and again randomly split the dataset. This allows you to repeat the process until you achieve the desired split.
 
 ## Core Functions
 
