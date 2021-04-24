@@ -130,7 +130,7 @@ def train_model(
     if checkpoint:
         filepath = f"run_{run_time}_best_model.hdf5"
         model_checkpoint = ModelCheckpoint(
-            filepath, monitor='val_accuracy', verbose=1, save_best_only=True
+            filepath, monitor="val_accuracy", verbose=1, save_best_only=True
         )
         callbacks.append(model_checkpoint)
 
