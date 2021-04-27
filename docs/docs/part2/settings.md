@@ -96,6 +96,12 @@ Relative path with respect to the project where the HDF5 of the uploaded models 
 
 **Default**: `data`
 
-Relative path with respect to `MEDIA_ROOT` where the data to be used for prediction is stored. This is used to refer to the data folder easily inside the project.
+Relative path with respect to `MEDIA_ROOT` where the data to be used for prediction is stored. This is used to refer to the data folder easily inside the project. Specifically, this is used to build a absolute path to the directory, stored in `DATA_DIRECTORY`. Inside your project, you can refer to the directory as:
+
+```python
+from django.conf import settings
+
+data = settings.DATA_DIRECTORY
+```
 
 **Example**: `mesonet_variants`
