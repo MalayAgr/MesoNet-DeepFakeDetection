@@ -56,15 +56,15 @@ To start using the project, follow the following steps. While the steps are spec
   pip install -r ../requirements.txt
   ```
 
-- Create a `.env` file with at least the `SECRET_KEY` setting. To obtain a secret key, you can use this [tool](https://djecrety.ir/).
+- Create a `.env` file with at least the [`SECRET_KEY`](settings#secret_key) setting. To obtain a secret key, you can use this [tool](https://djecrety.ir/).
 
   ```shell
   export SECRET_KEY=<value>
   ```
 
-  There are other [settings]() that you can modify. These are used in the `settings.py` file of your project. Also note that during deployment, variables in your `.env` file should NOT be preceded by `export`.
+  There are other [settings](settings) that you can modify. These are used in the `settings.py` file of your project. Also note that during deployment, variables in your `.env` file should NOT be preceded by `export`.
 
-- Make sure there is a directory at `MesoNet-DeepfakeDetection-API/mesonet_api/<MEDIA_FOLDER>` with the same name as the [`DATA_ROOT`](../settings#data_root) setting. This directory should contain your prediction data and have the following structure (assuming `DATA_ROOT` is data). Here, [`MEDIA_FOLDER`](../settings#media_folder) refers to the folder where user-uploaded content should be stored:
+- Make sure there is a directory at `MesoNet-DeepfakeDetection-API/mesonet_api/<MEDIA_FOLDER>` with the same name as the [`DATA_ROOT`](settings#data_root) setting. This directory should contain your prediction data and have the following structure (assuming `DATA_ROOT` is `data`). Here, [`MEDIA_FOLDER`](settings#media_folder) refers to the folder where user-uploaded content should be stored:
 
   ```shell
   └── data/
