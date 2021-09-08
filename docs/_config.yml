@@ -20,7 +20,7 @@
 
 title: "MesoNet: Docs"
 baseurl: "/MesoNet-DeepFakeDetection"
-url: "https://malayagarwal-lee.github.io"
+url: "https://malayagr.github.io/"
 
 # Build settings
 remote_theme: pmarsceill/just-the-docs
@@ -31,15 +31,14 @@ permalink: pretty
 # Aux links for the upper right navigation
 aux_links:
   "Part 1":
-    - "https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/"
+    - "https://github.com/MalayAgr/MesoNet-DeepFakeDetection/"
   "Part 2":
-    - "https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/"
+    - "https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/"
   "Part 3":
-    - "https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-WebApp/"
+    - "https://github.com/MalayAgr/MesoNet-DeepfakeDetection-WebApp/"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
-
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
