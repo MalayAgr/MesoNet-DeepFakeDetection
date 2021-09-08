@@ -27,9 +27,9 @@ It aims to demonstrate a solution to a small part of the misinformation problem.
 
 The overall project consists of three parts:
 
-- [Part 1: Model Construction and Training](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection) - This builds and trains various MesoNet variants, with the objective of obtaining multiple well-performing variants in the end. It is implemented using [TensorFlow](https://github.com/tensorflow/tensorflow).
-- [Part 2: API](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API) - This is an API that can be used to fetch results from a trained MesoNet model. It is implemented using [Django](https://github.com/django/django) and the [Django Rest Framework](https://github.com/encode/django-rest-framework).
-- [Part 3: Frontend](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-WebApp) - This is a webapp app which uses the above API to allow any Internet user to explore the inner workings of MesoNet. It is implemented in [Node.js](https://github.com/nodejs/node).
+- [Part 1: Model Construction and Training](https://github.com/MalayAgr/MesoNet-DeepFakeDetection) - This builds and trains various MesoNet variants, with the objective of obtaining multiple well-performing variants in the end. It is implemented using [TensorFlow](https://github.com/tensorflow/tensorflow).
+- [Part 2: API](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API) - This is an API that can be used to fetch results from a trained MesoNet model. It is implemented using [Django](https://github.com/django/django) and the [Django Rest Framework](https://github.com/encode/django-rest-framework).
+- [Part 3: Frontend](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-WebApp) - This is a webapp app which uses the above API to allow any Internet user to explore the inner workings of MesoNet. It is implemented in [Node.js](https://github.com/nodejs/node).
 
 **You're currently reading about Part 1**.
 
@@ -160,7 +160,7 @@ Other requirements are as follows:
 
 This section summarizes results from the two pre-trained models provided in [`trained_models`](./trained_models). Here, "best" is in terms of accuracy.
 
-The dataset used to train these models is available [here](https://drive.google.com/drive/folders/15E6NZr9vhsOfX_nkOtiYkIpWZwtpNi_7?usp=sharing). In both the cases, the default augmentations used in the paper have been applied on the dataset. These are listed [here]().
+The dataset used to train these models is available [here](https://drive.google.com/drive/folders/15E6NZr9vhsOfX_nkOtiYkIpWZwtpNi_7?usp=sharing). In both the cases, the default augmentations used in the paper have been applied on the dataset. These are listed [here](https://malayagr.github.io/MesoNet-DeepFakeDetection/docs/part1/mesonet/data/#note-on-augmentations).
 
 Moreover, 20% of the training data was reserved for the validation set. This led to the following distribution of training data:
 
@@ -229,7 +229,7 @@ While by looking at the numbers, it does make sense to call the first model the 
 
 ## 4. Documentation
 
-The documentation for the `mesonet` module and details on using the CLI are available in the [`docs`](./docs/) folder and [here](https://malayagarwal-lee.github.io/MesoNet-DeepFakeDetection/).
+The documentation for the `mesonet` module and details on using the CLI are available in the [`docs`](./docs/) folder and [here](https://malayagr.github.io/MesoNet-DeepFakeDetection/).
 
 ## 5. References
 
