@@ -20,7 +20,7 @@
 
 title: "MesoNet: Docs"
 baseurl: "/MesoNet-DeepFakeDetection"
-url: "https://malayagr.github.io/"
+url: "https://malayagr.github.io"
 
 # Build settings
 remote_theme: pmarsceill/just-the-docs
