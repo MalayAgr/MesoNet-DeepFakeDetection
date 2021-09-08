@@ -32,7 +32,7 @@ grand_parent: "Part 1: Model Construction and Training"
 
 ### `activation_layer(ip, activation, *args)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/a39ffff11bfb2512cb5fca137bd29b9c47d2d54b/mesonet/model.py#L23)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/a39ffff11bfb2512cb5fca137bd29b9c47d2d54b/mesonet/model.py#L23)
 
 Function to obtain an activation layer with the given input.
 
@@ -65,7 +65,7 @@ layer = activation_layer(layer, 'relu')
 
 ### `conv2D(ip, filters, kernel_size, activation, padding="same", pool_size=(2, 2))`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/a39ffff11bfb2512cb5fca137bd29b9c47d2d54b/mesonet/model.py#L48)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/a39ffff11bfb2512cb5fca137bd29b9c47d2d54b/mesonet/model.py#L48)
 
 Function to obtain a convolutional "block". A convolutional block is defined as a set of layers where the first layer is a convolutional layer. The entire set of layers is (in this order):
 
@@ -116,7 +116,7 @@ model = Model(ip, op_layer)
 
 ### `fully_connected_layer(ip, units, activation, dropout)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/a39ffff11bfb2512cb5fca137bd29b9c47d2d54b/mesonet/model.py#L86)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/a39ffff11bfb2512cb5fca137bd29b9c47d2d54b/mesonet/model.py#L86)
 
 Function to obtain an fully-connected "block". A fully-connected block is defined as a set of layers where the first layer is a fully-connected (dense) layer. The entire set of layers is (in this order):
 
@@ -157,11 +157,11 @@ model = Model(ip, op_layer)
 
 ### `build_model(ip=Input(shape=(IMG_WIDTH, IMG_WIDTH, 3)), activation="relu", dropout=0.5, hidden_activation="lrelu")`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L111)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L111)
 
 Function to obtain a model exactly replicating the architecture in the paper.
 
-See the model schematic [here](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/main/imgs/model_schematic.png).
+See the model schematic [here](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/main/imgs/model_schematic.png).
 
 It acts as a shortcut function to directly obtain a model with the same architecture as the paper and start training it, while also allowing you to modify the shape of the input, the activations and the dropout. Use this if you don't want to create your own variant with a different architecture.
 
@@ -186,7 +186,7 @@ meso.summary()
 
 ### `predict(model, data, steps=None, threshold=0.5)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L220)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L220)
 
 Function to make predictions on data. Can only handle a model with a sigmoid activation at the output layer.
 
@@ -202,7 +202,7 @@ It calls the `.predict()` method on the given model to obtain the predicted sigm
 
 ### `make_prediction(model_path, data_dir, threshold=0.5, batch_size=64, return_probs=False, return_report=False)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L286)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L286)
 
 Function to obtain predictions from a saved model using data from a directory.
 
@@ -234,7 +234,7 @@ preds, report = make_prediction('model.hdf5', 'data/test', return_report=True)
 
 ### `get_loaded_model(path)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L159)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L159)
 
 Function to load a saved model from a H5 file or .pd folder.
 
@@ -259,7 +259,7 @@ model = get_loaded_model('model.hdf5')
 
 ### `get_activation_model(model, conv_idx)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L172)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L172)
 
 Function to obtain the "activation model" of a trained model.
 
@@ -296,7 +296,7 @@ activation_model = get_activation_model(model, [0, 3])
 
 ### `evaluate_model(model, test_data_dir, batch_size=64)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L202)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L202)
 
 Function to obtain evaluation metrics on a trained model.
 
@@ -324,7 +324,7 @@ metrics = evaluate_model(model, 'data/test')
 
 ### `get_classification_report(true, preds, output_dict=False)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L251)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L251)
 
 Function to obtain an ROC report for a set of predictions.
 
@@ -339,7 +339,7 @@ It uses `sklearn.metrics.classification_report()` to obtain the recall, precisio
 
 ### `save_model_history(history, filename)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L348)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/605041c2316ae6017e0291082952fd062ef72a39/mesonet/model.py#L348)
 
 Function to dump a model's history into a pickle file.
 

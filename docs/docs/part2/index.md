@@ -20,8 +20,8 @@ It provides a simple admin interface to upload your trained models and simple en
 
 The API has been divided between two Django apps:
 
-- [`classifiers`](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/tree/main/mesonet_api/classifiers) - The `classifiers` app is the main workhorse of the API, providing the database model and the helper functions to upload models, load data, calculate things like accuracy and make predictions. This is a completely independent app and can easily be integrated into another Django project without breaking things (as long as the dependencies are met).
-- [`api`](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/tree/main/mesonet_api/api) - The `api` app contains all the endpoints that a user of the API can use. It relies on `classifiers` to do its work.
+- [`classifiers`](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/tree/main/mesonet_api/classifiers) - The `classifiers` app is the main workhorse of the API, providing the database model and the helper functions to upload models, load data, calculate things like accuracy and make predictions. This is a completely independent app and can easily be integrated into another Django project without breaking things (as long as the dependencies are met).
+- [`api`](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/tree/main/mesonet_api/api) - The `api` app contains all the endpoints that a user of the API can use. It relies on `classifiers` to do its work.
 
 ## Requirements
 
@@ -41,7 +41,7 @@ To start using the project, follow the following steps. While the steps are spec
 - Clone the repository from GitHub.
 
   ```shell
-  git clone https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API.git
+  git clone https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API.git
   ```
 
 - Change working directory to `MesoNet-DeepfakeDetection-API/mesonet_api/`.

@@ -58,7 +58,7 @@ It is completely isolated from the rest of the project and so, extremely portabl
 
 # `MLModel`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/models.py)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/models.py)
 
 The `MLModel` database model is the model used to work with trained MesoNet variants. It provides the ability to obtain predictions from variants and visualizing convolutional layer outputs.
 
@@ -306,7 +306,7 @@ This method is used by `_visualize_conv_layers_single_img()` to save each plot i
 
 # Utilities
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/utils.py)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/utils.py)
 
 The `utils` module in `classifiers` provides utilities that are used by the rest of the project.
 
@@ -449,7 +449,7 @@ The size of images that should be returned by `get_data_generator()`. Defaults t
 
 # Serializers
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/serializers.py)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/serializers.py)
 
 ## `MLModelSerializer`
 
@@ -494,7 +494,7 @@ predictions = json.dumps(serialized)
 
 # Storages
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/storages.py)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/blob/main/mesonet_api/classifiers/storages.py)
 
 ## `MLModelStorage`
 

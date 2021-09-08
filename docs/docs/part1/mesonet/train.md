@@ -18,7 +18,7 @@ The module has only one function.
 
 ### `train_model(model, train_data_dir, validation_split=None, batch_size=32, use_default_augmentation=True, augmentations=None, epochs=30, compile=True, lr=1e-3, loss="binary_crossentropy", lr_decay=True, decay_rate=0.10, decay_limit=1e-6, checkpoint=True, stop_early=True, monitor="val_accuracy", mode="auto", patience=20, tensorboard=True, loss_curve=True)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/e2b2a58f7b4325618f77cc3a24ed67210cc1d62c/mesonet/train.py#L12)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/e2b2a58f7b4325618f77cc3a24ed67210cc1d62c/mesonet/train.py#L12)
 
 Function to train a model.
 

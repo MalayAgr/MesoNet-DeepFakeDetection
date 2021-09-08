@@ -12,7 +12,7 @@ I'm a Computer Science engineer, an aspiring Artificial Intelligence researcher,
 
 Follow me on social media:
 
-[Github](https://github.com/MalayAgarwal-Lee)
+[Github](https://github.com/MalayAgr)
 
 [LinkedIn](https://www.linkedin.com/in/malayagr/)
 

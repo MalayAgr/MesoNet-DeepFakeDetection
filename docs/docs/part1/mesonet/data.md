@@ -27,7 +27,7 @@ grand_parent: "Part 1: Model Construction and Training"
 
 ### `get_train_data_generator(train_data_dir, batch_size, validation_split=None, use_default_augmentation=True, augmentations=None)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/d176ac0173f49bdd178b335d8c8fa62da2b2ad1a/mesonet/data.py#L37)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/d176ac0173f49bdd178b335d8c8fa62da2b2ad1a/mesonet/data.py#L37)
 
 Function to obtain iterators with data to train a model. The size of the images yielded is determined by `IMG_WIDTH` in `mesonet.utils` and the numbers of channels is always 3 (RGB).
 
@@ -54,7 +54,7 @@ train, val = get_train_data_generator('data/train/`, 64, 0.2, augmentations={'zc
 
 ### `get_test_data_generator(test_data_dir, batch_size, shuffle=False)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/d176ac0173f49bdd178b335d8c8fa62da2b2ad1a/mesonet/data.py#L104)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/d176ac0173f49bdd178b335d8c8fa62da2b2ad1a/mesonet/data.py#L104)
 
 Function to obtain an iterator with data to test a model. The size of the images yielded is determined by IMG_WIDTH in utils and the numbers of channels is always 3 (RGB).
 
@@ -86,7 +86,7 @@ roc = get_classification_report(data.classes, preds)
 
 ### `_get_datagen(use_default_augmentation=True, **kwargs)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/d176ac0173f49bdd178b335d8c8fa62da2b2ad1a/mesonet/data.py#L6)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/d176ac0173f49bdd178b335d8c8fa62da2b2ad1a/mesonet/data.py#L6)
 
 Function to obtain a `ImageDataGenerator` with specified augmentations.
 
@@ -128,11 +128,11 @@ It is possible to override these values or add more augmentations of your own. A
 
 ## Note on `bloat_data.py`
 
-In my experiments, I found that the [dataset](https://my.pcloud.com/publink/show?code=XZLGvd7ZI9LjgIy7iOLzXBG5RNJzGFQzhTRy) used has too many images in the validation split. Almost 37% of the total data has been reserved for testing. You can take a look at the distribution [here](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection#23-the-data).
+In my experiments, I found that the [dataset](https://my.pcloud.com/publink/show?code=XZLGvd7ZI9LjgIy7iOLzXBG5RNJzGFQzhTRy) used has too many images in the validation split. Almost 37% of the total data has been reserved for testing. You can take a look at the distribution [here](https://github.com/MalayAgr/MesoNet-DeepFakeDetection#23-the-data).
 
 > **Note**: In today's jargon, what the paper refers to as the validation split is called the test split.
 
-In case you come to the same conclusions, the project comes with a [script](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/main/bloat_data.py) which takes all the images across both the splits and creates a new dataset, where only a small portion (by default, 10%) of the data is reserved for testing.
+In case you come to the same conclusions, the project comes with a [script](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/main/bloat_data.py) which takes all the images across both the splits and creates a new dataset, where only a small portion (by default, 10%) of the data is reserved for testing.
 
 The original dataset has the following structure:
 

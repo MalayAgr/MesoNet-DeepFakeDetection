@@ -34,7 +34,7 @@ has_toc: false
 
 The project comes equipped with a command line interface (CLI) to train and obtain predictions from MesoNet variants, built using `argparse`.
 
-The entrypoint for the CLI is the [`mesonet.py`](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/main/mesonet.py) file. You can use the CLI with the following command:
+The entrypoint for the CLI is the [`mesonet.py`](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/main/mesonet.py) file. You can use the CLI with the following command:
 
 ```bash
 python mesonet.py [sub-command]
@@ -47,7 +47,7 @@ There are two sub-commands available:
 
 ## Training Sub-Command
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/main/cli/training_cli.py)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/main/cli/training_cli.py)
 
 The `train` sub-command is responsible for training a MesoNet variant. Currently, it only supports training the architecture detailed in the original paper.
 
@@ -133,7 +133,7 @@ In all the examples below, data is assumed to be at `data/train/`.
 
 ## Prediction Sub-Command
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/main/cli/prediction_cli.py)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/main/cli/prediction_cli.py)
 
 The `predict` sub-command is responsible for obtaining predictions on data from a saved MesoNet variant. You can use both an HDF5 file and a directory containing a `.pb` file. Note that this only works when the output layer has a sigmoid activation.
 

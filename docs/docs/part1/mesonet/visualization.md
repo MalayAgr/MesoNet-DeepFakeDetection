@@ -24,7 +24,7 @@ grand_parent: "Part 1: Model Construction and Training"
 
 ### `plot_loss_curve(history)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/9e2441464b184295cdc496bc3321a1c3862b93b7/mesonet/visualization.py#L7)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/9e2441464b184295cdc496bc3321a1c3862b93b7/mesonet/visualization.py#L7)
 
 Function to plot training and validation loss of a trained model.
 
@@ -32,7 +32,7 @@ It uses `matplotlib.pyplot` to plot the training and validation losses against t
 
 The generated curve looks like this:
 
-![Loss Curve](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/main/imgs/model2_17epochs_valacc0.89_loss.png?raw=true)
+![Loss Curve](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/main/imgs/model2_17epochs_valacc0.89_loss.png?raw=true)
 
 | **Arguments** |                                           |
 | ------------- | ----------------------------------------- |
@@ -40,7 +40,7 @@ The generated curve looks like this:
 
 ### `visualize_conv_layers(model, imgs, conv_idx)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/9e2441464b184295cdc496bc3321a1c3862b93b7/mesonet/visualization.py#L53)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/9e2441464b184295cdc496bc3321a1c3862b93b7/mesonet/visualization.py#L53)
 
 Function to visualize specified convolutional layers for given images.
 
@@ -60,7 +60,7 @@ An example plot is shown below (showing the first layer of one of the pre-traine
 
 ### `_visualize_conv_layers_single_img(activations, conv_idx)`
 
-[[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepFakeDetection/blob/9e2441464b184295cdc496bc3321a1c3862b93b7/mesonet/visualization.py#L22)
+[[source]](https://github.com/MalayAgr/MesoNet-DeepFakeDetection/blob/9e2441464b184295cdc496bc3321a1c3862b93b7/mesonet/visualization.py#L22)
 
 Function to visualize output of multiple convolutional layers for a single image.
 

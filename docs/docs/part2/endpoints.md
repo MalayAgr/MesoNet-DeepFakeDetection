@@ -22,7 +22,7 @@ Returns JSON data about the number of images available in the dataset on the ser
 
 **URL**: `/api/dataset-size/`
 
-**Django View**: `api.views.DatasetSizeView` [[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/blob/8961684fb1c56db99dd505eb14e539765ef83036/mesonet_api/api/views.py#L9)
+**Django View**: `api.views.DatasetSizeView` [[source]](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/blob/8961684fb1c56db99dd505eb14e539765ef83036/mesonet_api/api/views.py#L9)
 
 **Method**: `GET`
 
@@ -60,7 +60,7 @@ Returns JSON data listing all the MesoNet variants available to obtain predictio
 
 **URL**: `/api/available-models/`
 
-**Django View**: `api.views.ListModelsView` [[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/blob/8961684fb1c56db99dd505eb14e539765ef83036/mesonet_api/api/views.py#L17)
+**Django View**: `api.views.ListModelsView` [[source]](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/blob/8961684fb1c56db99dd505eb14e539765ef83036/mesonet_api/api/views.py#L17)
 
 **Method**: `GET`
 
@@ -132,7 +132,7 @@ Returns JSON data consisting of predictions made using the given MesoNet variant
 
 **URL**: `/api/predictions/:modelID/:numImgs/[:convIdx]/`
 
-**Django View**: `api.views.PredictionResultsView` [[source]](https://github.com/MalayAgarwal-Lee/MesoNet-DeepfakeDetection-API/blob/8961684fb1c56db99dd505eb14e539765ef83036/mesonet_api/api/views.py#L23)
+**Django View**: `api.views.PredictionResultsView` [[source]](https://github.com/MalayAgr/MesoNet-DeepfakeDetection-API/blob/8961684fb1c56db99dd505eb14e539765ef83036/mesonet_api/api/views.py#L23)
 
 **Method**: `GET`
 
